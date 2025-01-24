@@ -4,6 +4,14 @@ from .locators import ProductPageLocators
 
 class ProductPage(BasePage):
 
+    def product_title(self):
+        product_title = self.browser.find_element(*ProductPageLocators.PRODUCT_TITLE).text
+        return product_title
+
+    def product_price(self):
+        product_price = self.browser.find_element(*ProductPageLocators.PRODUCT_PRICE).text
+        return product_price
+
     def should_add_product_to_basket(self):
         basket_button = self.browser.find_element(*ProductPageLocators.BASKET_BUTTON)
         basket_button.click()
@@ -16,14 +24,12 @@ class ProductPage(BasePage):
         # Сначала проверяем, что элементы присутствуют на странице
         assert self.is_element_present(*ProductPageLocators.PRODUCT_TITLE_ADDED)
         added_product_title = self.browser.find_element(*ProductPageLocators.PRODUCT_TITLE_ADDED).text
-        product_title = self.browser.find_element(*ProductPageLocators.PRODUCT_TITLE).text
-        assert product_title == added_product_title, "Заголовок товара и добавленного в корзину товара не совпадают"
+        product_name = self.product_title()
+        assert product_name == added_product_title, "Заголовок товара и добавленного в корзину товара не совпадают"
 
     def should_be_equal_product_price_and_basket_cost(self):
         # Сначала проверяем, что элементы присутствуют на странице
         assert self.is_element_present(*ProductPageLocators.BASKET_COST)
         basket_cost = self.browser.find_element(*ProductPageLocators.BASKET_COST).text
-        product_price = self.browser.find_element(*ProductPageLocators.PRODUCT_PRICE).text
+        product_price = self.product_price()
         assert basket_cost == product_price, "Цена товара и стоимость корзины не совпадают"
-
-
