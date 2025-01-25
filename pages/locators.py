@@ -17,3 +17,4 @@ class ProductPageLocators:
     BASKET_COST = (By.CSS_SELECTOR, "#messages .alert-info p strong")
     PRODUCT_PRICE = (By.CSS_SELECTOR, "#content_inner .product_main p")
     BASKET_TOTAL = (By.CSS_SELECTOR, 'div.page_inner div.basket-mini')
+    SUCCESS_MESSAGE = (By.CSS_SELECTOR, '#messages div.alert-success')
