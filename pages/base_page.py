@@ -4,11 +4,12 @@ from selenium.common.exceptions import NoSuchElementException, TimeoutException
 from selenium.common.exceptions import NoAlertPresentException  # в начале файла
 from selenium.webdriver.support.wait import WebDriverWait
 import selenium.webdriver.support.expected_conditions as EC
+from pages.locators import BasePageLocators
 
 
 class BasePage:
 
-    def __init__(self, browser, url, timeout=0):
+    def __init__(self, browser, url, timeout=3):
         self.browser = browser
         self.url = url
         self.browser.implicitly_wait(timeout)
@@ -22,6 +23,14 @@ class BasePage:
         except NoSuchElementException:
             return False
         return True
+
+    # т.к. ссылка на страницу логина присутствует на каждой странице
+    def go_to_login_page(self):
+        link = self.browser.find_element(*BasePageLocators.LOGIN_LINK)
+        link.click()
+
+    def should_be_login_link(self):
+        assert self.is_element_present(*BasePageLocators.LOGIN_LINK), "Login link is not presented"
 
     def solve_quiz_and_get_code(self):
         alert = self.browser.switch_to.alert
