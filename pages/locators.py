@@ -16,4 +16,4 @@ class ProductPageLocators:
     PRODUCT_TITLE = (By.CSS_SELECTOR, "#content_inner h1")
     BASKET_COST = (By.CSS_SELECTOR, "#messages .alert-info p strong")
     PRODUCT_PRICE = (By.CSS_SELECTOR, "#content_inner .product_main p")
-    BASKET_TOTAL = (By.XPATH, '//div[@class="page_inner"]//div[@class="basket-mini"]/text()')
+    BASKET_TOTAL = (By.CSS_SELECTOR, 'div.page_inner div.basket-mini')
