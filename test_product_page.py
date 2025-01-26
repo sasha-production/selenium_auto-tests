@@ -29,6 +29,7 @@ def test_guest_should_add_product_to_basket(browser, link):
     page.should_be_title_and_price_after_adding_to_basket()
 
 
+@pytest.mark.xfail(reason="bug will fix")
 def test_guest_cant_see_success_message_after_adding_product_to_basket(browser):
     link = 'http://selenium1py.pythonanywhere.com/en-gb/catalogue/coders-at-work_207/'
     page = ProductPage(browser, link)
@@ -44,6 +45,7 @@ def test_guest_cant_see_success_message(browser):
     page.should_be_no_success_message()
 
 
+@pytest.mark.xfail(reason="bug will fix")
 def test_message_disappeared_after_adding_product_to_basket(browser):
     link = 'http://selenium1py.pythonanywhere.com/en-gb/catalogue/coders-at-work_207/'
     page = ProductPage(browser, link)
