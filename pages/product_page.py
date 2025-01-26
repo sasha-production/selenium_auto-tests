@@ -48,8 +48,8 @@ class ProductPage(BasePage):
                                   f"корзина до добавления {self.basket_total}"
 
     def should_be_no_success_message(self):
-        assert self.is_not_element_present(*ProductPageLocators.SUCCESS_MESSAGE), 'element(message) is presented on page'
+        assert self.is_not_element_present(
+            *ProductPageLocators.SUCCESS_MESSAGE), 'element(message) is presented on page'
 
     def should_be_disappeared(self):
-        assert self.is_disappeared(*ProductPageLocators.SUCCESS_MESSAGE), "is not disappeared"
-
+        assert self.is_disappeared(*ProductPageLocators.SUCCESS_MESSAGE), "element(message) is not disappeared"

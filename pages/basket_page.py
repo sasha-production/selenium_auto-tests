@@ -1,6 +1,5 @@
 from .base_page import BasePage
 from .locators import BasketPageLocators
-from selenium.webdriver.support.wait import WebDriverWait
 
 
 class BasketPage(BasePage):
